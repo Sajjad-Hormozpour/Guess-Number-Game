@@ -55,7 +55,53 @@ namespace Game
                 MessageBox.Show(ex.Message);
             }
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int tester = (999 - 100) / 2;
+            int maxallowedvalue = 999;
+            int minallowedvalue = 100;
+            int c = 0;
+            c = 1;
+            if (tester == rnd)
+            {
+                MessageBox.Show("the answer : " + tester + " and the number of trys: " + c);//
+            }
+            else
+            {
 
+
+                while (tester != rnd)
+                {
+                    if (tester > rnd)
+                    {
+                        maxallowedvalue = tester;
+                        tester = tester - ((tester - minallowedvalue) / 2);
+                        c++;
+
+                    }
+                    else
+                    {
+                        minallowedvalue = tester;
+                        tester = ((maxallowedvalue - tester) / 2) + tester;
+                        c++;
+                    }
+
+                }
+                MessageBox.Show("the answer : " + tester + " and the number of trys: " + c);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            Random r = new Random();
+            rnd = r.Next(100, 999);
+            counter = 0;
+            label1.Text = "Answer is : " + rnd.ToString();
+            label2.Text = "Round: " + counter.ToString();
+            listBox1.Items.Clear();
+            button1.Enabled = true;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             Random r = new Random();
